@@ -1,12 +1,13 @@
-import StatusLabel, { Status } from '@/app/components/status-label';
-import NotActiveLabel from './components/not-active-label';
-import ActiveLabel from './components/active-label';
+// import StatusLabel, { Status } from '@/app/components/status-label';
+// import NotActiveLabel from './components/not-active-label';
+// import ActiveLabel from './components/active-label';
+import AddCompanyButton from './components/add-company-button';
 
 export default function Home() {
   return (
     <main>
       <h1 className="text-xl">Home page</h1>
-      <ActiveLabel>Active</ActiveLabel>
+      {/* <ActiveLabel>Active</ActiveLabel>
       <NotActiveLabel>Notactive</NotActiveLabel>
       <div>
         <StatusLabel status={Status.Active}>Active</StatusLabel>
@@ -14,7 +15,8 @@ export default function Home() {
         <StatusLabel status={Status.Pending}>Pending</StatusLabel>
         <StatusLabel status={Status.Suspended}>Suspended</StatusLabel>
       </div>
-      <p className="text-orange-700 bg-orange-100">Status</p>
+      <p className="text-orange-700 bg-orange-100">Status</p> */}
+      <AddCompanyButton />
     </main>
   );
 }
