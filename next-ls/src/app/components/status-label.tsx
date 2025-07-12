@@ -14,7 +14,11 @@ export interface StatusLabelProps {
   disabled?: boolean;
 }
 
-const StatusLabel = ({ children, status, disabled }: StatusLabelProps) => {
+export default function StatusLabel({
+  children,
+  status,
+  disabled,
+}: StatusLabelProps) {
   console.log(process.env.CRM_SECRET_KEY);
   return (
     <div
@@ -33,6 +37,4 @@ const StatusLabel = ({ children, status, disabled }: StatusLabelProps) => {
       {children}
     </div>
   );
-};
-
-export default StatusLabel;
+}

@@ -5,8 +5,6 @@ export interface ActiveLabelProps {
   children: React.ReactNode;
 }
 
-const ActiveLabel = ({ children }: ActiveLabelProps) => {
+export default function ActiveLabel({ children }: ActiveLabelProps) {
   return <span className={styles.label}>{children}</span>;
-};
-
-export default ActiveLabel;
+}

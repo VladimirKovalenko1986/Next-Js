@@ -11,7 +11,7 @@ export interface InputFieldProps {
   type?: string;
 }
 
-const InputFieid = ({ label, id, ...rest }: InputFieldProps) => {
+export default function InputFieid({ label, id, ...rest }: InputFieldProps) {
   return (
     <div className="flex flex-col">
       {label && (
@@ -26,6 +26,4 @@ const InputFieid = ({ label, id, ...rest }: InputFieldProps) => {
       />
     </div>
   );
-};
-
-export default InputFieid;
+}

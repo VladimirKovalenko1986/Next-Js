@@ -8,12 +8,12 @@ export interface LogoUploaderProps
   label?: string;
 }
 
-const LogoUploader = ({
+export default function LogoUploader({
   label,
   placeholder,
   id,
   ...rest
-}: LogoUploaderProps) => {
+}: LogoUploaderProps) {
   return (
     <div className="flex gap-10 mb-3">
       {label && <p className="text-base color-gray-900">{label}</p>}
@@ -41,6 +41,4 @@ const LogoUploader = ({
       </label>
     </div>
   );
-};
-
-export default LogoUploader;
+}

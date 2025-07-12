@@ -5,8 +5,6 @@ export interface NotActiveLabelProps {
   children: React.ReactNode;
 }
 
-const NotActiveLabel = ({ children }: NotActiveLabelProps) => {
+export default function NotActiveLabel({ children }: NotActiveLabelProps) {
   return <span className={styles.label}>{children}</span>;
-};
-
-export default NotActiveLabel;
+}
