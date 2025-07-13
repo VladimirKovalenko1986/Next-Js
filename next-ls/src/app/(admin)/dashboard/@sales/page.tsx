@@ -1,46 +1,30 @@
 import React from 'react';
-import { getSummarySales } from '@/lib/api';
-import SummaryTable from '@/app/components/summary-table';
-import SummaryTableHeader from '@/app/components/summary-table-header';
-import SummaryTableCell from '@/app/components/summary-table-cell';
-import DashboardCard from '@/app/components/dashboard-card';
+import { getSummaryStats, SummaryStats } from '@/lib/api';
+import StatCard, { StatCardType } from '@/app/components/stat-card';
 
 export interface PageProps {}
 
-interface SummaryData {
-  companyId: number;
-  companyTitle: string;
-  sold: number;
-  income: number;
-}
+const labelByStat: Record<keyof SummaryStats, string> = {
+  promotions: 'Total promotions',
+  categories: 'Total categories',
+  newCompanies: 'New companies',
+  activeCompanies: 'Active companies',
+};
 
 export default async function Page({}: PageProps) {
-  const data: SummaryData[] = await new Promise((res) => {
-    setTimeout(async () => {
-      const result = await getSummarySales();
-      res(result);
-    }, 4000);
-  });
+  const data: SummaryStats = await getSummaryStats();
 
   return (
-    <DashboardCard label="Sales details">
-      <SummaryTable
-        headers={
-          <>
-            <SummaryTableHeader>Company</SummaryTableHeader>
-            <SummaryTableHeader align="center">Sold</SummaryTableHeader>
-            <SummaryTableHeader align="center">Income</SummaryTableHeader>
-          </>
-        }
-      >
-        {data.map(({ companyId, companyTitle, sold, income }) => (
-          <tr key={companyId}>
-            <SummaryTableCell>{companyTitle}</SummaryTableCell>
-            <SummaryTableCell align="center">{sold}</SummaryTableCell>
-            <SummaryTableCell align="center">{`$${income}`}</SummaryTableCell>
-          </tr>
-        ))}
-      </SummaryTable>
-    </DashboardCard>
+    <div className="grid grid-cols-12 gap-5">
+      {(Object.keys(labelByStat) as (keyof SummaryStats)[]).map((key) => (
+        <div key={key} className="col-span-3">
+          <StatCard
+            type={StatCardType.Gradient}
+            label={labelByStat[key]}
+            counter={data[key]}
+          />
+        </div>
+      ))}
+    </div>
   );
 }
