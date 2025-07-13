@@ -1,11 +1,13 @@
 import React from 'react';
+import Header from '@/app/components/header';
 
 // export interface PageProps {}
 
 export default function Page({}) {
   return (
     <main>
-      <h1 className="text-xl">Settings Page</h1>
+      <Header>Dashboard Page / New companies</Header>
+      <div>Some edditional info</div>
     </main>
   );
 }
